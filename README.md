@@ -41,9 +41,9 @@ I spent over 40 hours building, testing, and debugging this setup. Save yourself
 
 ## Software Configuration
 
-1. All core micro-controller configurations sit inside the `firmware/` directory.
+1. All core micro-controller configurations sit inside the `codes/` directory.
 2. If you are using the Arduino IDE, make sure you install `Adafruit_SSD1306`, `Adafruit_MPR121`, and `LedControl` through the library manager first.
 3. Make sure to hardcode different I2C addresses on your OLED screens (usually requires moving a physical jumper resistor on the back of one board from `0x3C` to `0x3D`) so they don't fight for the bus.
 4. Flash the main ESP32 sketch first, then upload the helper matrix controller to your ESP8266.
 
-If you get stuck trying to trace the lines inside the box, check out `hardware_mapping.md` for the exact pin tables!
+If you get stuck trying to trace the lines inside the box, check out `hardware.md` for the exact pin tables!
