@@ -46,4 +46,4 @@ I spent over 40 hours building, testing, and debugging this setup. Save yourself
 3. Make sure to hardcode different I2C addresses on your OLED screens (usually requires moving a physical jumper resistor on the back of one board from `0x3C` to `0x3D`) so they don't fight for the bus.
 4. Flash the main ESP32 sketch first, then upload the helper matrix controller to your ESP8266.
 
-If you get stuck trying to trace the lines inside the box, check out `hardware.md` for the exact pin tables!
+If you get stuck trying to trace the lines inside the box, check out `hardware.md` for the exact pin tables! 
