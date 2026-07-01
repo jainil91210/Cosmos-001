@@ -33,10 +33,10 @@ The system features a dual-OLED multitasking array, a hand-wired capacitive touc
 
 ## Repository Structure
 
-* `firmware/main_esp32/` — Main loop execution, keyboard maps, and terminal UI source code.
-* `firmware/sensor_esp8266/` — Secondary sensor parsing loop and MAX7219 display multiplexer.
-* `hardware/` — Circuit pinout maps and physical structural mounting details.
-* `interface/` — Web-console local API endpoint bridge script layout.
+* `codes/` — Main loop execution, keyboard maps, and terminal UI source code.
+* `codes/` — Secondary sensor parsing loop and MAX7219 display multiplexer.
+* `codes/` — Circuit pinout maps and physical structural mounting details.
+* `codes/ai integration` — Web-console local API endpoint bridge script layout.
 
 ---
 
@@ -53,8 +53,6 @@ The system features a dual-OLED multitasking array, a hand-wired capacitive touc
 | 1 | 8-Way Vertical DIP | SW1 | DIP-8 Through-Hole | 0.40$ |
 | 1 | Tactile Push Button | SW2 | 6x6x5mm Tact Button | 0.05$ |
 | 1 | Micro Vibration Motor| MOT1 | Coreless Cylinder | 0.60$ |
-| 1 | 2N2222 Transistor | Q1 | TO-92 Inline | 0.10$ |
-| 1 | 1k Ohm Resistor | R1 | Axial Through-Hole | 0.01$ |
 
 ---
 
