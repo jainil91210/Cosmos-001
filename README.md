@@ -1,49 +1,85 @@
-# Cosmos-001: The Handheld Dual-Display AI Terminal
+# Cosmos-001: Handheld Dual-Display AI Terminal
 
-Hey! Welcome to the repository for Cosmos-001. 
+Cosmos-001 is a pocket-sized, dual-display handheld hardware platform built inside a custom clear enclosure. It serves as a portable AI terminal, an environmental magnetic scanner, and a modular development tool. 
 
-This is a pocket-sized handheld machine I built inside a clear plastic project box. It features a dual-OLED layout for multitasking, an integrated custom keyboard, haptic feedback, and a built-in magnetometer paired with an 8x8 LED matrix for visual metal detection. 
-
-I built this project for Hack Club. My goal here is to keep the project completely open, readable, and structured so that anyone can replicate it without running into the exact same hardware bottlenecks I dealt with.
+The system features a dual-OLED multitasking array, a hand-wired capacitive touch screw-matrix keyboard, haptic feedback integration, and a physical magnetometer coupled with an 8x8 LED matrix for visual metal detection.
 
 ---
 
-## What It Actually Does
+## Specifications
 
-* **Dual-Screen Layout:** Runs two separate I2C OLED screens simultaneously. One display is completely dedicated to streaming text conversations with AI models via an external browser bridge, while the second acts as a system dashboard for status feeds or running retro games.
-* **Capacitive Screw-Pad Keyboard:** Built using an MPR121 capacitive touch controller. Instead of using a bulky commercial keyboard, the inputs are mapped directly to physical metal screws drilled straight through the clear plastic casing.
-* **8-Way DIP Switch Mode Selection:** Uses a physical vertical DIP switch to instantly swap keyboard map layers. You can toggle between lowercase, uppercase, numbers, special characters, or custom macros like a Python editor mode.
-* **Visual Metal Detection:** Combines an internal magnetometer with a top-mounted 8x8 LED matrix. When you pass the device over walls or objects, the matrix lights up progressively like a signal-strength meter to help locate hidden metal screws or structural pieces.
-* **Haptic Engine:** Features an internal mini vibration motor driven by a transistor circuit to provide sharp tactile feedback every time a touch key registers or an AI response comes in.
-
----
-
-## Parts Inside the Box
-
-If you want to piece this together yourself, here is exactly what I used:
-* **Microcontrollers:** 1x ESP32 NodeMCU (handles the main loop, screens, and inputs) + 1x ESP8266 (offloaded to handle the magnetometer loop and matrix updates).
-* **Displays:** 2x SSD1306 I2C OLED Displays (128x64) + 1x MAX7219 8x8 LED Matrix Display.
-* **Sensors:** 1x MPR121 Capacitive Touch Module + 1x QMC5883L/HMC5883L Magnetometer.
-* **Hardware & Discrete Components:** 1x 8-way vertical DIP switch, 1x standard tactile push button, 1x 5V coreless vibration motor, 1x 2N2222 transistor (for motor switching), 1x 1k Ohm resistor, a handful of small metal screws, and a clear plastic project enclosure.
+| Item | Details |
+| :--- | :--- |
+| **MCU 1 (Master)** | ESP32 NodeMCU (Dual-Core 32-bit) |
+| **MCU 2 (Sensors)** | ESP-12S (ESP8266 Wi-Fi) |
+| **Primary Display** | SSD1306 I2C OLED (128x64) |
+| **Secondary Display**| SSD1306 I2C OLED (128x64) |
+| **Sensor Display** | MAX7219 8x8 LED Matrix |
+| **Logic Voltage** | 3.3V |
+| **Sensors** | QMC5883L 3-Axis Magnetometer |
+| **Input Interface** | MPR121 Capacitive Matrix + 1x Tactile Button |
 
 ---
 
-## Things I Learned (Read This to Avoid Breaking Stuff)
+## Features
 
-I spent over 40 hours building, testing, and debugging this setup. Save yourself a few days of troubleshooting by reading these notes before you touch the soldering iron:
-
-1. **Watch the plastic casing when soldering:** When mounting the custom screw-pad keyboard, you have to solder directly to the metal screws sitting inside the clear plastic box. Work fast and use high heat for short bursts. If you leave the iron on the screw for too long, the plastic box around it softens and melts instantly.
-2. **The physical Enter key choice:** I originally tried using an electrode on the capacitive touch keyboard as the 'Enter' key. It was a bad idea—the touch pad was too sensitive and kept accidentally registering duplicate presses, which sent incomplete prompts over the network and wasted API credits. I stripped it out and put a reliable, physical tactile push button in its place. The tactile click gives way better control.
-3. **Internal wire length matters:** Do not make your internal hookup wires exact or too short. Space gets tight inside the box very quickly. I originally cut mine short to keep things looking neat, but when I packed the ESP32 into place, the tension pulled a wire loose and created a tiny, invisible short between two transistor pins on the OLED circuit that crashed the entire I2C bus. Give yourself some slack and organize the wires with tape or ties instead.
-4. **Isolate your magnetometer:** If you use a vibration motor for haptic feedback, keep it as far away from the magnetometer module as possible. The permanent magnets inside the tiny motor will completely throw off your magnetometer readings every single time the motor vibrates to confirm a keypress.
+* **Dual-OLED Multitasking:** Run core prompt streaming arrays on the primary terminal display while monitoring hardware logs or micro-games on the secondary display.
+* **Capacitive Screw Keyboard:** Custom key matrix utilizing physical metal chassis screws drilled directly through the face of the clear enclosure, decoded via the MPR121.
+* **8-Way Mode Layering:** A physical vertical DIP switch swaps keyboard mapping configurations instantly between lowercase, uppercase, symbols, and custom macro modes.
+* **Subsurface Magnetic Finder:** Offloaded processing cycle reads raw magnetic fields to visualize hidden screws or structural metal points directly onto the 8x8 matrix.
+* **Haptic Pulse Engine:** Low-latency micro-vibration feedback maps satisfying tactical clicks to valid character inputs and data transmissions.
 
 ---
 
-## Software Configuration
+## Repository Structure
 
-1. All core micro-controller configurations sit inside the `codes/` directory.
-2. If you are using the Arduino IDE, make sure you install `Adafruit_SSD1306`, `Adafruit_MPR121`, and `LedControl` through the library manager first.
-3. Make sure to hardcode different I2C addresses on your OLED screens (usually requires moving a physical jumper resistor on the back of one board from `0x3C` to `0x3D`) so they don't fight for the bus.
-4. Flash the main ESP32 sketch first, then upload the helper matrix controller to your ESP8266.
+* `firmware/main_esp32/` — Main loop execution, keyboard maps, and terminal UI source code.
+* `firmware/sensor_esp8266/` — Secondary sensor parsing loop and MAX7219 display multiplexer.
+* `hardware/` — Circuit pinout maps and physical structural mounting details.
+* `interface/` — Web-console local API endpoint bridge script layout.
 
-If you get stuck trying to trace the lines inside the box, check out `hardware.md` for the exact pin tables! 
+---
+
+## Bill of Materials (BOM)
+
+| Item Qty | Value/Part Name | Designator | Package Type | Estimated Unit Cost (USD) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | ESP32 NodeMCU | U1 | DevBoard Modules | 3.50$ |
+| 1 | ESP-12S Module | U2 | SMD-Wireless | 1.70$ |
+| 2 | SSD1306 OLED Screen | DISP1, DISP2 | I2C Module 0.96" | 2.20$ |
+| 1 | MAX7219 8x8 Matrix | DISP3 | LED-Matrix-Module | 1.50$ |
+| 1 | MPR121 Touch Sensor | U3 | I2C Breakout Board | 1.30$ |
+| 1 | QMC5883L Magnetometer| U4 | Sensor Breakout | 1.10$ |
+| 1 | 8-Way Vertical DIP | SW1 | DIP-8 Through-Hole | 0.40$ |
+| 1 | Tactile Push Button | SW2 | 6x6x5mm Tact Button | 0.05$ |
+| 1 | Micro Vibration Motor| MOT1 | Coreless Cylinder | 0.60$ |
+| 1 | 2N2222 Transistor | Q1 | TO-92 Inline | 0.10$ |
+| 1 | 1k Ohm Resistor | R1 | Axial Through-Hole | 0.01$ |
+
+---
+
+## Crucial Build Notes & Hardware Gotchas
+
+These are the real lessons learned over 40+ hours of physical prototyping and debugging. Read these carefully before building your own unit:
+
+1. **The Screw Solder Problem:** When attaching wire leads to the chassis keyboard screws inside the box, you must work incredibly fast with a hot iron. Leaving the tip on the screw head for more than 2-3 seconds will melt the clear enclosure instantly.
+2. **The "Enter Key" Shift:** Do not map the final execution 'Enter' trigger to a capacitive touch electrode. It is too sensitive, leading to ghost double-triggers that swamp the web socket and waste API credits. Use a physical tactile push button instead.
+3. **Internal Wire Slack:** Space inside a tight, hand-wired clear project box gets restricted immediately. Do not cut wire lengths exactly to size. Shifting internal components can stretch short wires, causing them to break or create invisible shorts across components. Give yourself slack.
+4. **Magnetic Field Separation:** Keep the haptic vibration motor as physically isolated from the magnetometer module as possible. The permanent fields inside the motor casing will skew sensor calibration cycles whenever haptic pulses activate.
+
+---
+
+## Contributing
+
+Contributions, software forks, and structural remixes are welcome! Please read the `CONTRIBUTING.md` guide to get started.
+
+## Credits
+
+![Hack Club](https://img.shields.io/badge/Hack_Club-Macondo-red)
+![Designed In](https://img.shields.io/badge/Designed_In-Hand__Wired-blue)
+![Cased In](https://img.shields.io/badge/Cased_In-Clear__Box-orange)
+
+This project was created during the Hack Club Macondo event.
+
+* **jainil91210** - Core firmware design, hardware prototyping, and chassis mapping.
+* Inspiration and readme structure styles adapted from the community open-source devboard design layouts.
