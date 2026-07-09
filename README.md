@@ -58,7 +58,7 @@ The system features a dual-OLED multitasking array, a hand-wired capacitive touc
 
 ## Crucial Build Notes & Hardware Gotchas
 
-These are the real lessons learned over 40+ hours of physical prototyping and debugging. Read these carefully before building your own unit:
+These are the real lessons I learned over 40+ hours of physical prototyping and debugging. Read these carefully before building your own unit:
 
 1. **The Screw Solder Problem:** When attaching wire leads to the chassis keyboard screws inside the box, you must work incredibly fast with a hot iron. Leaving the tip on the screw head for more than 2-3 seconds will melt the clear enclosure instantly.
 2. **The "Enter Key" Shift:** Do not map the final execution 'Enter' trigger to a capacitive touch electrode. It is too sensitive, leading to ghost double-triggers that swamp the web socket and waste API credits. Use a physical tactile push button instead.
@@ -66,10 +66,6 @@ These are the real lessons learned over 40+ hours of physical prototyping and de
 4. **Magnetic Field Separation:** Keep the haptic vibration motor as physically isolated from the magnetometer module as possible. The permanent fields inside the motor casing will skew sensor calibration cycles whenever haptic pulses activate.
 
 ---
-
-## Contributing
-
-Contributions, software forks, and structural remixes are welcome! Please read the `CONTRIBUTING.md` guide to get started.
 
 ## Credits
 
@@ -79,5 +75,4 @@ Contributions, software forks, and structural remixes are welcome! Please read t
 
 This project was created during the Hack Club Macondo event.
 
-* **jainil91210** - Core firmware design, hardware prototyping, and chassis mapping.
 * Inspiration and readme structure styles adapted from the community open-source devboard design layouts.
