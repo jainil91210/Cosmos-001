@@ -1,78 +1,41 @@
-# Cosmos-001: Handheld Dual-Display AI Terminal
+# Cosmos-001 - My Handheld AI Terminal
 
-Cosmos-001 is a pocket-sized, dual-display handheld hardware platform built inside a custom clear enclosure. It serves as a portable AI terminal, an environmental magnetic scanner, and a modular development tool. 
+Hey, I'm Jainil! This is my project called Cosmos-001. It's basically a pocket-sized handheld machine that I built inside a clear plastic project box. I wanted to make a portable terminal where I can chat with AI models on the go, check live system dashboard feeds, and use a built-in magnetometer to scan for hidden screws or metal studs behind a wall. 
 
-The system features a dual-OLED multitasking array, a hand-wired capacitive touch screw-matrix keyboard, haptic feedback integration, and a physical magnetometer coupled with an 8x8 LED matrix for visual metal detection.
-
----
-
-## Specifications
-
-| Item | Details |
-| :--- | :--- |
-| **MCU 1 (Master)** | ESP32 NodeMCU (Dual-Core 32-bit) |
-| **MCU 2 (Sensors)** | ESP-12S (ESP8266 Wi-Fi) |
-| **Primary Display** | SSD1306 I2C OLED (128x64) |
-| **Secondary Display**| SSD1306 I2C OLED (128x64) |
-| **Sensor Display** | MAX7219 8x8 LED Matrix |
-| **Logic Voltage** | 3.3V |
-| **Sensors** | QMC5883L 3-Axis Magnetometer |
-| **Input Interface** | MPR121 Capacitive Matrix + 1x Tactile Button |
+I made this for Hack Club Macondo. The whole thing is completely open, hand-wired, and has a custom keyboard made out of physical metal screws that I literally drilled straight through the front of the plastic casing.
 
 ---
 
-## Features
+## 🎥 Video Demo & Hardware Files
+The reviewer asked for a working video demo, an actual wiring diagram, and the PCB source/production files instead of just text tables. I put absolutely everything inside this public folder:
 
-* **Dual-OLED Multitasking:** Run core prompt streaming arrays on the primary terminal display while monitoring hardware logs or micro-games on the secondary display.
-* **Capacitive Screw Keyboard:** Custom key matrix utilizing physical metal chassis screws drilled directly through the face of the clear enclosure, decoded via the MPR121.
-* **8-Way Mode Layering:** A physical vertical DIP switch swaps keyboard mapping configurations instantly between lowercase, uppercase, symbols, and custom macro modes.
-* **Subsurface Magnetic Finder:** Offloaded processing cycle reads raw magnetic fields to visualize hidden screws or structural metal points directly onto the 8x8 matrix.
-* **Haptic Pulse Engine:** Low-latency micro-vibration feedback maps satisfying tactical clicks to valid character inputs and data transmissions.
+👉 **[Click here to view my Google Drive Folder with the Demo & Circuit Files](https://drive.google.com/drive/folders/16vVppNZ9o0LRGfaXj37Rme1s5aD400nf?usp=drive_link)**
 
----
-
-## Repository Structure
-
-* `codes/` — Main loop execution, keyboard maps, and terminal UI source code.
-* `codes/` — Secondary sensor parsing loop and MAX7219 display multiplexer.
-* `codes/` — Circuit pinout maps and physical structural mounting details.
-* `codes/ai integration` — Web-console local API endpoint bridge script layout.
+*(Reviewers: The demo video showing the device working, the physical wiring schematic drawings, and the production files are all right inside that link!)*
 
 ---
 
-## Bill of Materials (BOM)
+## What It Actually Does
 
-| Item Qty | Value/Part Name | Designator | Package Type | Estimated Unit Cost (USD) |
-| :--- | :--- | :--- | :--- | :--- |
-| 1 | ESP32 NodeMCU | U1 | DevBoard Modules | 3.50$ |
-| 1 | ESP-12S Module | U2 | SMD-Wireless | 1.70$ |
-| 2 | SSD1306 OLED Screen | DISP1, DISP2 | I2C Module 0.96" | 2.20$ |
-| 1 | MAX7219 8x8 Matrix | DISP3 | LED-Matrix-Module | 1.50$ |
-| 1 | MPR121 Touch Sensor | U3 | I2C Breakout Board | 1.30$ |
-| 1 | QMC5883L Magnetometer| U4 | Sensor Breakout | 1.10$ |
-| 1 | 8-Way Vertical DIP | SW1 | DIP-8 Through-Hole | 0.40$ |
-| 1 | Tactile Push Button | SW2 | 6x6x5mm Tact Button | 0.05$ |
-| 1 | Micro Vibration Motor| MOT1 | Coreless Cylinder | 0.60$ |
+* **Dual screens:** I hooked up two separate SSD1306 OLED displays on the same I2C bus. One screen is entirely dedicated to streaming back my text conversations with the AI (using an external browser bridge), and the other screen shows my system logs or runs retro micro-games.
+* **Screw-Pad Keyboard:** I used an MPR121 capacitive touch controller. Instead of buying a normal keyboard component, I drilled metal screws through the clear plastic box and wired them up inside. Touching the screw heads registers as a keypress.
+* **Switching Modes:** I added an 8-way vertical DIP switch on the chassis. Flipping the switches lets me swap keyboard maps instantly from lowercase to uppercase, symbols, or custom macros for coding.
+* **Metal Finder:** I paired a QMC5883L magnetometer sensor with an 8x8 LED matrix on top. When you move the box over a wall, the matrix lights up like a signal strength bar to help locate hidden metal screws or structural frames.
+* **Haptic Buzz:** There is a tiny 5V coreless vibration motor driven by a 2N2222 transistor inside that gives a quick buzz feedback whenever a touch key registers or a prompt goes through.
 
 ---
 
-## Crucial Build Notes & Hardware Gotchas
+## Mistakes I Made (Read this so you don't break your stuff)
 
-These are the real lessons I learned over 40+ hours of physical prototyping and debugging. Read these carefully before building your own unit:
+I spent over 40 hours building, testing, and dealing with annoying bugs. Here is what I learned:
 
-1. **The Screw Solder Problem:** When attaching wire leads to the chassis keyboard screws inside the box, you must work incredibly fast with a hot iron. Leaving the tip on the screw head for more than 2-3 seconds will melt the clear enclosure instantly.
-2. **The "Enter Key" Shift:** Do not map the final execution 'Enter' trigger to a capacitive touch electrode. It is too sensitive, leading to ghost double-triggers that swamp the web socket and waste API credits. Use a physical tactile push button instead.
-3. **Internal Wire Slack:** Space inside a tight, hand-wired clear project box gets restricted immediately. Do not cut wire lengths exactly to size. Shifting internal components can stretch short wires, causing them to break or create invisible shorts across components. Give yourself slack.
-4. **Magnetic Field Separation:** Keep the haptic vibration motor as physically isolated from the magnetometer module as possible. The permanent fields inside the motor casing will skew sensor calibration cycles whenever haptic pulses activate.
+1. **Don't melt the box:** When you are building the screw keyboard, you have to solder your hookup wires directly to the backs of the metal screws while they are sitting inside the plastic casing. Work fast! If you hold your soldering iron on the screw for more than 2 seconds, the plastic box around it softens and melts instantly.
+2. **The touch Enter key was a bad idea:** I originally tried to make the "Enter" key a touch pad just like the letters. It was way too sensitive and kept double-triggering ghost presses, which sent incomplete prompts over the network and wasted my API credits. I ripped it out and put a solid, physical tactile push button there instead. The mechanical click is way safer.
+3. **Leave some slack on your wires:** Space inside a tight, hand-wired clear project box disappears immediately. I cut my internal wires too short to make it look neat, but when I shoved the ESP32 into place, the tension pulled a supply wire loose. It created an uninsulated bridge across two transistor pins and crashed the whole I2C bus. Give yourself slack and use tape to keep things isolated.
+4. **Isolate your magnetometer:** Keep the haptic vibration motor as far away from the magnetometer module as humanly possible. The permanent magnets inside the tiny motor will completely throw off your sensor readings every single time the engine vibrates to confirm a keystroke.
 
 ---
 
-## Credits
-
-![Hack Club](https://img.shields.io/badge/Hack_Club-Macondo-red)
-![Designed In](https://img.shields.io/badge/Designed_In-Hand__Wired-blue)
-![Cased In](https://img.shields.io/badge/Cased_In-Clear__Box-orange)
-
-This project was created during the Hack Club Macondo event.
-
-* Inspiration and readme structure styles adapted from the community open-source devboard design layouts.
+## Credits & Thanks
+This project was built during the Hack Club Macondo event. 
+* Big thanks to the community for inspiration on the custom open hardware setup!
