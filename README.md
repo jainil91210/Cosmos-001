@@ -6,12 +6,10 @@ I made this for Hack Club Macondo. The whole thing is completely open, hand-wire
 
 ---
 
-## 🎥 Video Demo & Hardware Files
-The reviewer asked for a working video demo, an actual wiring diagram, and the PCB source/production files instead of just text tables. I put absolutely everything inside this public folder:
+## 🎥 Demo Videos & Project Files
+I recorded a full video showing the device working and put it inside this Google Drive folder along with my actual hand-drawn wiring diagrams, schematics, and the PCB/production files:
 
-👉 **[Click here to view my Google Drive Folder with the Demo & Circuit Files](https://drive.google.com/drive/folders/16vVppNZ9o0LRGfaXj37Rme1s5aD400nf?usp=drive_link)**
-
-*(Reviewers: The demo video showing the device working, the physical wiring schematic drawings, and the production files are all right inside that link!)*
+👉 **[watch the demo videos](https://drive.google.com/drive/folders/16vVppNZ9o0LRGfaXj37Rme1s5aD400nf?usp=drive_link)**
 
 ---
 
