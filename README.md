@@ -4,7 +4,7 @@ Hiey, I'm Jainil Patel from India! This is my project called Cosmos-001. It is b
 
 I made this for Hack Club Macondo. I made the whole thing open source and have used plastic case and sensors and micro-controllers to act as the system.
 
-![The Cosmos-001 inside its clear case](images/4.jpeg)
+![The Cosmos-001 inside its clear case](images/143.jpeg)
 
 ---
 
@@ -65,7 +65,7 @@ I spent over 40 hours building, testing, and dealing with annoying bugs. Here is
 
 Here you can see the two distinct display outputs I have configured.
 
-![View of both screens illuminated, angle 1](images/9.jpeg)
+![View of both screens illuminated, angle 1](images/69.jpeg)
 ![View of both screens illuminated, angle 2](images/10.jpeg)
 
 ---
