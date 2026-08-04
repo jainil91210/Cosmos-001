@@ -65,8 +65,8 @@ I spent over 40 hours building, testing, and dealing with annoying bugs. Here is
 
 Here you can see the two distinct display outputs I have configured.
 
-![View of both screens illuminated, angle 1](images/cosmos 9.jpeg)
-![View of both screens illuminated, angle 2](images/cosmos 10.jpeg)
+![View of both screens illuminated, angle 1](images/cosmos 9.jpg)
+![View of both screens illuminated, angle 2](images/cosmos 10.jpg)
 
 ---
 
