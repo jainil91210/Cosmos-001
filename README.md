@@ -50,8 +50,7 @@ Here you can see the different stages of the build and the component placement.
 
 I spent over 40 hours building, testing, and dealing with annoying bugs. Here is what I learned:
 
-1. **Don't melt the box:** When you are building the screw keyboard, you have to solder your hookup wires directly to the backs of the metal screws while they are sitting inside the plastic casing. Work fast! If you hold your soldering iron on the screw for more than 2 seconds, the plastic box around it softens and melts instantly.
-
+1. **Don't melt the box:** When you are building the screw keyboard, you have to solder your hookup wires directly to the backs of the metal screws while they are sitting inside the plastic casing. Work fast! If you hold your soldering iron on the screw for more than 2 seconds, the plastic box around it softens and melts instantly. My plastic box was also melted yet I somewhow managed to make it wokring.
 ![The completed screw-pad keyboard](images/keyboard.jpg)
 
 2. **The touch Enter key was a bad idea:** I originally tried to make the "Enter" key a touch pad just like the letters. It was way too sensitive and kept double-triggering ghost presses, which sent incomplete prompts over the network and wasted my API credits. I ripped it out and put a solid, physical tactile push button there instead. The mechanical click is way safer.
