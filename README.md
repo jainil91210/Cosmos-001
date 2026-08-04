@@ -66,7 +66,7 @@ I spent over 40 hours building, testing, and dealing with annoying bugs. Here is
 Here you can see the two distinct display outputs I have configured.
 
 ![View of both screens illuminated, angle 1](images/69.jpeg)
-![View of both screens illuminated, angle 2](images/10.jpeg)
+![View of both screens illuminated, angle 2](images/11.jpeg)
 
 ---
 
