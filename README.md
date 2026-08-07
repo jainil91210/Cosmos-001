@@ -8,11 +8,11 @@ I made this for Hack Club Macondo. I made the whole thing open source and have u
 
 ---
 
-## 🎥 Demo Videos & Project Files
+##  Demo Videos & Project Files
 
-👉 **[watch the demo videos](https://youtu.be/SLG37cFlI9c)**  
-👉 **[watch the demo videos](https://youtu.be/DeMVShFD8oA)**  
-👉 **[watch the demo videos](https://youtu.be/JphGT0AEgFY)**  
+**[watch the demo videos](https://youtu.be/SLG37cFlI9c)**  
+**[watch the demo videos](https://youtu.be/DeMVShFD8oA)**  
+**[watch the demo videos](https://youtu.be/JphGT0AEgFY)**  
 
 ---
 
@@ -32,11 +32,11 @@ I made this for Hack Club Macondo. I made the whole thing open source and have u
 ## Hardware & Design Files
 
 All source design files and gerbers are inside the `/hardware` folder:
-* **EasyEDA Source & Schematic:** Located in `/hardware` (`.epro` / `.json`)
+* **EasyEDA Source & Schematic:** Located in `/hardware`
 * **Gerber Files:** Located in `/hardware`
 * **Full Parts List:** See [bom.csv](./bom.csv) for full buying list on Robu.in.
 
-### Internal System Views
+### Internal System 
 
 Here you can see the different stages of the build and the component placement.
 
@@ -46,7 +46,7 @@ Here you can see the different stages of the build and the component placement.
 
 ---
 
-## Mistakes I Made (Read this so you don't break your stuff)
+## Mistakes I Made (Read this so you don't waste yoru time)
 
 I spent over 40 hours building, testing, and dealing with annoying bugs. Here is what I learned:
 
@@ -63,7 +63,7 @@ I spent over 40 hours building, testing, and dealing with annoying bugs. Here is
 
 ## The Dual Screens In Action
 
-Here you can see the two distinct display outputs I have configured.
+Here you can see the two differnet display outputs I have configured.
 
 ![View of both screens illuminated, angle 1](images/69.jpeg)
 ![View of both screens illuminated, angle 2](images/11.jpeg)
@@ -74,13 +74,11 @@ Here you can see the two distinct display outputs I have configured.
 
 | Item | Component | Qty | Link (Robu.in) |
 | --- | --- | --- | --- |
-| 1 | ESP32 Development Board | 1 | [Buy on Robu.in](https://robu.in/product/esp32-wifi-bluetooth-development-board/) |
+| 1 | ESP32  | 1 | [Buy on Robu.in](https://robu.in/product/esp32-wifi-bluetooth-development-board/) |
 | 2 | MPR121 Touch Sensor | 1 | [Buy on Robu.in](https://robu.in/product/mpr121-breakout-v12-capacitive-touch-sensor-controller-module-i2c-keyboard/) |
-| 3 | QMC5883L Magnetometer Module | 1 | [Buy on Robu.in](https://robu.in/product/gy-271-hmc5883l-3v-5v-triple-axis-compass-magnetometer-sensor-module/) |
+| 3 | QMC5883L Magnetometer  | 1 | [Buy on Robu.in](https://robu.in/product/gy-271-hmc5883l-3v-5v-triple-axis-compass-magnetometer-sensor-module/) |
 | 4 | 8x8 LED Matrix Module | 1 | [Buy on Robu.in](https://robu.in/product/max7219-dot-matrix-module-4-in-1-display/) |
 | 5 | 5V Vibration Motor | 1 | [Buy on Robu.in](https://robu.in/product/micro-vibration-motor-10x2-7mm/) |
-
-*(Detailed file with complete part attributes available in [bom.csv](./bom.csv).)*
 
 ---
 
